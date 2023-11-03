@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1= title
+   - var Vechile=[{Vechile_model:"Audi",Vechile_year:"2019",Vechile_price:2000},{Vechile_model:"GMC",Vechile_year:"2022",Vechile_price:3000},{Vechile_model:"Jeep",Vechile_year:"2020",Vechile_price:1000}]
+  div(class="container-fluid")
+  div(class="row")
+   each f,index  in Vechile
+    div(class="col-sm-2" onclick =`buy(${index})`) #{f.Vechile_model}, #{f.Vechile_year}, #{f.Vechile_price}
+    script.
+        function buy(a)
+        {
+            alert(`You purchased Item ${a+1}`)
+        } 
