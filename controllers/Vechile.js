@@ -1,6 +1,6 @@
 var Vechile = require('../models/Vechile');
 
-exports.Vechile_list = function (req, res) {
+exports.Vechile_list = async function (req, res) {
     res.send('NOT IMPLEMENTED: Vechile list');
 };
 // for a specific Vechile.
@@ -18,4 +18,16 @@ exports.Vechile_delete = function (req, res) {
 // Handle Vechile update form on PUT.
 exports.Vechile_update_put = function (req, res) {
     res.send('NOT IMPLEMENTED: Vechile update PUT' + req.params.id);
+};
+
+// List of all Vechile
+exports.Vechile_list = async function (req, res) {
+    try {
+        theVechile = await Vechile.find();
+        res.send(theVechile);
+    }
+    catch (err) {
+        res.status(500);
+        res.send(`{"error": ${err}}`);
+    }
 };
