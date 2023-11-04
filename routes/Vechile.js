@@ -1,9 +1,6 @@
 var express = require('express');
+const Vechile_controlers= require('../controllers/Vechile');
 var router = express.Router();
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('Vechile', { title: 'Search Results Vechile' });
-});
-
+/* GET costumes */
+router.get('/', Vechile_controlers.costume_view_all_Page );
 module.exports = router;

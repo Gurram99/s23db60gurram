@@ -31,3 +31,37 @@ exports.Vechile_list = async function (req, res) {
         res.send(`{"error": ${err}}`);
     }
 };
+
+// VIEWS
+// Handle a show all view
+exports.Vechile_view_all_Page = async function (req, res) {
+    try {
+        theVechile = await Vechile.find();
+        res.render('Vechile', { title: 'Vechile Search Results', results: theVechile });
+    }
+    catch (err) {
+        res.status(500);
+        res.send(`{"error": ${err}}`);
+    }
+};
+
+// Handle Vechiles create on POST.
+exports.Vechile_create_post = async function (req, res) {
+    console.log(req.body)
+    let document = new Vechiles();
+    // We are looking for a body, since POST does not have query parameters.
+    // Even though bodies can be in many different formats, we will be picky
+    // and require that it be a json object
+    // {"Vechile_model":"Audi", "Vechile_year":2023, "Vechile_price":10000}
+    document.Vechile_model = req.body.Vechile_model;
+    document.Vechile_year = req.body.Vechile_year;
+    document.Vechile_price = req.body.Vechile_price;
+    try {
+        let result = await document.save();
+        res.send(result);
+    }
+    catch (err) {
+        res.status(500);
+        res.send(`{"error": ${err}}`);
+    }
+};
