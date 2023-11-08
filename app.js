@@ -35,7 +35,7 @@ app.use('/resource', resourceRouter);
 
 const connectionString = process.env.MONGO_CON;
 const mongoose = require('mongoose');
-mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(connectionString);
 
 
 // catch 404 and forward to error handler
@@ -65,7 +65,8 @@ console.log("Connection to DB succeeded")});
 
 async function recreateDB(){
   // Delete everything
-  await Vechile.deleteMany();
+  //await Vechile.deleteMany();
+  await Vechile.deleteMany({}).maxTimeMS(30000);
   let instance1 = new 
   Vechile({Vechile_model:"Audi", Vechile_year:'2023', 
   Vechile_price:10000});
