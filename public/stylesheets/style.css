@@ -6,3 +6,8 @@ body {
 a {
   color: #00B7FF;
 }
+
+.VechileAttr {
+  background-color: rgb(211, 241, 16);
+  width: 120px;
+  }

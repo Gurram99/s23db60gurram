@@ -113,3 +113,18 @@ exports.Vechile_delete = async function(req, res) {
     res.send(`{"error": Error deleting ${err}}`);
     }
    };
+
+      //New code added for Assignment 12 (screenshot 6)
+   // Handle a show one view with id specified by query
+exports.Vechile_view_one_Page = async function(req, res) {
+    console.log("single view for id " + req.query.id)
+    try{
+    result = await Vechile.findById( req.query.id)
+    res.render('Vechiledetail', 
+   { title: 'Vechile Detail', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+   };

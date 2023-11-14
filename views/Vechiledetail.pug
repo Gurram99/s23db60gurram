@@ -1,0 +1,20 @@
+extends layout
+block content
+ h1= title
+ - let Vechileid = toShow._id
+ - let Vechile_model = toShow.Vechile_model
+ - let Vechile_year = toShow.Vechile_year
+ - let Vechile_price = toShow.Vechile_price
+ div
+ div.row
+ div(class='VechileAttr mr-3') Vechile ID is:
+ div #{Vechileid}
+ div.row
+ div(class='VechileAttr mr-3') Vechile Model is:
+ div #{Vechile_model}
+ div.row
+ div(class='VechileAttr mr-3') Vechile Year is:
+ div #{Vechile_year}
+ div.row
+ div(class='Vechilesttr mr-3') Vechile Price is:
+ div #{Vechile_price}
