@@ -11,4 +11,6 @@ router.get('/create', Vechile_controlers.Vechile_create_Page);
 /* GET create update page */
 router.get('/update', Vechile_controlers.Vechile_update_Page);
 /* GET delete costume page */
+router.get('/delete', Vechile_controlers.Vechile_delete_Page);
 module.exports = router;
+
