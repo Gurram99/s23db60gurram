@@ -99,3 +99,17 @@ ${JSON.stringify(req.body)}`)
 failed`);
     }
 };
+
+//Newly added code for Assigment 12 (Screenshot 4 and 5)
+// Handle cars delete on DELETE.
+exports.Vechile_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+    result = await Vechile.findByIdAndDelete( req.params.id)
+    console.log("Removed " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": Error deleting ${err}}`);
+    }
+   };
