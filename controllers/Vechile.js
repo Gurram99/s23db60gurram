@@ -128,3 +128,18 @@ exports.Vechile_view_one_Page = async function(req, res) {
     res.send(`{'error': '${err}'}`);
     }
    };
+
+//New code added for Assignment 12 (screenshot 7)
+// Handle building the view for creating a costume.
+// No body, no in path parameter, no query.
+// Does not need to be async
+exports.Vechile_create_Page = function(req, res) {
+    console.log("create view")
+    try{
+    res.render('Vechilecreate', { title: 'Vechile Create'});
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+   };

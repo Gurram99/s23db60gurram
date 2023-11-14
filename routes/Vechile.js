@@ -7,4 +7,6 @@ router.get('/Vechile/:id', Vechile_controlers.Vechile_detail);
 /* GET detail cars page */ 
 router.get('/detail', Vechile_controlers.Vechile_view_one_Page); 
 /* GET create cars page */ 
+router.get('/create', Vechile_controlers.Vechile_create_Page);
+/* GET create update page */
 module.exports = router;
