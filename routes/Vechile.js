@@ -9,4 +9,6 @@ router.get('/detail', Vechile_controlers.Vechile_view_one_Page);
 /* GET create cars page */ 
 router.get('/create', Vechile_controlers.Vechile_create_Page);
 /* GET create update page */
+router.get('/update', Vechile_controlers.Vechile_update_Page);
+/* GET delete costume page */
 module.exports = router;

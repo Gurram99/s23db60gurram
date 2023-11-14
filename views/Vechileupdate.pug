@@ -1,0 +1,42 @@
+extends layout
+block content
+  h1= title
+  - let Vechileid = toShow._id
+  - let Vechile_model = toShow.Vechile_model
+  - let Vechile_year = toShow.Vechile_year
+  - let Vechile_price = toShow.Vechile_price
+ 
+  div.row(class='mb-2')
+    div.mr-1 ID is
+    div #{Vechileid}
+    
+  - let actionid = "/resource/Vechile/" + Vechileid
+  form(id='VechileForm', action= actionid, method="PUT")
+    div.form-group
+      label.VechileAttr(for='Vechile_model') Vechile type
+      input#Vechile_model(type='text', name='Vechile_model', value= Vechile_model )
+    div.form-group
+      label.VechileAttr(for='Vechile_year') Vechile size
+      input#Vechile_year(type='text', name='Vechile_year', value= Vechile_year )
+    div.form-group
+      label.VechileAttr(for='Vechile_price') Vechile price
+      input#Vechile_price(type='number', name='Vechile_price', value= Vechile_price )
+    input(type="submit")
+    
+    script.
+      document.forms['VechileForm'].addEventListener('submit', (event) => {
+        event.preventDefault();
+        // TODO do something here to show user that form is being submitted
+        fetch(event.target.action, {
+          method: 'PUT',
+          body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+        }).then((resp) => {
+          return resp.json(); // or resp.text() or whatever the server sends
+        }).then((body) => {
+          alert("Update succeeded")
+          // TODO handle body
+        }).catch((error) => {
+          // TODO handle error
+          alert("Update failed " + error )
+        });
+      });
