@@ -2,13 +2,18 @@ extends layout
 
 block content
   h1= title
-   - var Vechile=[{Vechile_model:"Audi",Vechile_year:"2019",Vechile_price:2000},{Vechile_model:"GMC",Vechile_year:"2022",Vechile_price:3000},{Vechile_model:"Jeep",Vechile_year:"2020",Vechile_price:1000}]
-  div(class="container-fluid")
-  div(class="row")
-   each f,index  in Vechile
-    div(class="col-sm-2" onclick =`buy(${index})`) #{f.Vechile_model}, #{f.Vechile_year}, #{f.Vechile_price}
-    script.
-        function buy(a)
-        {
-            alert(`You purchased Item ${a+1}`)
-        } 
+  - let result = results;
+  - var Vechile=[{Vechile_model:"Audi",Vechile_year:"2019",Vechile_price:2000},{Vechile_model:"GMC",Vechile_year:"2022",Vechile_price:3000},{Vechile_model:"Jeep",Vechile_year:"2020",Vechile_price:1000}]
+  div(class="container-fluid mt-3")
+  div(class="row m-1")
+    each result,index  in results
+      - let destination = `/Vechile/update?id=${result._id}`
+      div(class="col-sm-2", onclick=`buy(${index})`) #{result.Vechile_model}, #{result.Vechile_year}, #{result.Vechile_price}
+      button.btn(class="btn-primary ml-1", onclick=`dispatch('${destination}')`) Update
+  script.
+    function buy(a) {
+      alert(`You purchased Item ${a+1}`);
+    }
+    function dispatch(path) {
+      window.location.href = path;
+    }
